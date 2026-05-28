@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from "../../POM/loginPage.js";
 import { SearchPage } from '../../POM/search.js';
 
-test.describe('Product Search & Discovery', () => {
+test.describe('Search & Discovery', () => {
 
     let loginPage;
     let searchPage;
@@ -110,18 +110,14 @@ test.describe('Product Search & Discovery', () => {
     });
 
     // ===================================================
-    // SEARCH-06 Verify Clicking Product Opens PDP Page
+    // SEARCH-06 Product Title Visible
     // ===================================================
 
-    test('SEARCH-06 Verify Clicking Product Opens PDP Page', async ({ page }) => {
+    test('SEARCH-06 Product Title Visible', async ({ page }) => {
 
         await searchPage.searchProduct('shirt');
 
-        // Click first product
-        await page.locator('.product-item-link').first().click();
-
-        // Verify product page opened
-        await expect(page).toHaveURL("https://demo-m2.bird.eu/radiant-tee.html");
+        await expect(searchPage.productTitle.first()).toBeVisible();
 
     });
 

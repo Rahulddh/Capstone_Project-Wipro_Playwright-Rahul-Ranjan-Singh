@@ -101,4 +101,3 @@ jobs:
         publish_branch: gh-pages
         publish_dir: allure-report
       continue-on-error: true
-      
