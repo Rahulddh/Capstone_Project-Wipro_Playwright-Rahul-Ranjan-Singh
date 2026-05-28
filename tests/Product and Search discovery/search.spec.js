@@ -30,100 +30,100 @@ test.describe('Product Search & Discovery', () => {
     // SEARCH-01 Valid Search
     // ====================================
 
-    // const validdata = [
-    //     'shirt',
-    //     'SHIRT',
-    //     'Shirt',
-    //     'sHIRT',
+    const validdata = [
+        'shirt',
+        'SHIRT',
+        'Shirt',
+        'sHIRT',
 
-    // ];
+    ];
 
-    // validdata.forEach(data => {
-    //     test('SEARCH-01 valid Search' + data, async ({ page }) => {
-    //         await searchPage.searchProduct(data);
+    validdata.forEach(data => {
+        test('SEARCH-01 valid Search' + data, async ({ page }) => {
+            await searchPage.searchProduct(data);
 
-    //         //await expect(searchPage.productTitle.first()).toBeVisible();
-    //         await expect(page.locator('[data-ui-id="page-title-wrapper"]')).toHaveText(`Search results for: '${data}'`)
+            //await expect(searchPage.productTitle.first()).toBeVisible();
+            await expect(page.locator('[data-ui-id="page-title-wrapper"]')).toHaveText(`Search results for: '${data}'`)
 
-    //     });
-    // });
+        });
+    });
 
     // ====================================
     // SEARCH-02 Invalid Search
     // ====================================
 
-    // const invaliddata = [
-    //     'fgdjy',
-    //     '1234',
-    //     '!@#$',
-    //     'shirt123',
+    const invaliddata = [
+        'fgdjy',
+        '1234',
+        '!@#$',
+        'shirt123',
 
-    // ];
+    ];
 
-    // invaliddata.forEach(data => {
-    //     test('SEARCH-02 Invalid Search' + data, async ({ page }) => {
-    //         await searchPage.searchProduct(data);
+    invaliddata.forEach(data => {
+        test('SEARCH-02 Invalid Search' + data, async ({ page }) => {
+            await searchPage.searchProduct(data);
 
-    //         await expect(page.locator('.message.notice')).toContainText('Your search returned no results.');
+            await expect(page.locator('.message.notice')).toContainText('Your search returned no results.');
 
-    //     });
-    // });
+        });
+    });
 
 
     // ====================================
     // SEARCH-03 Partial Search
     // ====================================
 
-    // test(
-    //     'SEARCH-03 Partial Search', async ({ page }) => {
+    test(
+        'SEARCH-03 Partial Search', async ({ page }) => {
 
-    //         await searchPage.searchProduct('shi');
+            await searchPage.searchProduct('shi');
 
-    //         await expect(page.locator('dt.title').nth(1)).toContainText('Related search terms');
-    //         //await expect(page.locator('dt.title', {hasText: 'Related search terms'})).toBeVisible();
-    //         //await expect(page.getByText('Related search terms')).toBeVisible();
+            await expect(page.locator('dt.title').nth(1)).toContainText('Related search terms');
+            //await expect(page.locator('dt.title', {hasText: 'Related search terms'})).toBeVisible();
+            //await expect(page.getByText('Related search terms')).toBeVisible();
 
-    //     });
+        });
 
     // ====================================
     // SEARCH-04 Product Price Visible
     // ====================================
 
-    // test('SEARCH-04 Product Price Visible', async ({ page }) => {
+    test('SEARCH-04 Product Price Visible', async ({ page }) => {
 
-    //     await searchPage.searchProduct('shirt');
+        await searchPage.searchProduct('shirt');
 
-    //     await expect(searchPage.productPrice.first()).toBeVisible();
+        await expect(searchPage.productPrice.first()).toBeVisible();
 
-    // });
+    });
 
     // ====================================
     // SEARCH-05 Product Image Visible
     // ====================================
 
-    // test('SEARCH-05 Product Image Visible', async ({ page }) => {
+    test('SEARCH-05 Product Image Visible', async ({ page }) => {
 
-    //     await searchPage.searchProduct('shirt');
+        await searchPage.searchProduct('shirt');
 
-    //     await expect(searchPage.productImage.first()).toBeVisible();
+        await expect(searchPage.productImage.first()).toBeVisible();
 
-    // });
+    });
 
     // ===================================================
     // SEARCH-06 Verify Clicking Product Opens PDP Page
     // ===================================================
 
-    // test('SEARCH-06 Verify Clicking Product Opens PDP Page', async ({ page }) => {
+    test('SEARCH-06 Verify Clicking Product Opens PDP Page', async ({ page }) => {
 
-    //     await searchPage.searchProduct('shirt');
+        await searchPage.searchProduct('shirt');
 
-    //     // Click first product
-    //     await page.locator('.product-item-link').first().click();
+        // Click first product
+        await page.locator('.product-item-link').first().click();
 
-    //     // Verify product page opened
-    //     await expect(page).toHaveURL("https://demo-m2.bird.eu/radiant-tee.html");
+        // Verify product page opened
+        await expect(page).toHaveURL("https://demo-m2.bird.eu/radiant-tee.html");
 
-    // });
+    });
 
     
 
