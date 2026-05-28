@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:headed": "npx playwright test --headed",
-    "test:parallel": "npx playwright test --parallel",
-    "test:debug": "npx playwright test --debug"
+    "test": "playwright test",
+    "test:ci": "playwright test",
+    "allure:generate": "allure generate allure-results -o allure-report"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rahulddh/Capstone_Project-Wipro_Playwright-Rhul-Ranjan-Singh.git"
