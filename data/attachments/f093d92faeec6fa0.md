@@ -1,0 +1,170 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Authentication/login.spec.js >> AUTHENTICATION Login Test >> LOGIN-05 Verify LogOut
+- Location: tests/Authentication/login.spec.js:98:9
+
+# Error details
+
+```
+Error: locator.fill: value: expected string, got undefined
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - paragraph [ref=e4]: This is a demo store. No orders will be fulfilled.
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - generic [ref=e8]:
+        - link "Skip to Content" [ref=e9] [cursor=pointer]:
+          - /url: "#contentarea"
+        - generic [ref=e10]:
+          - strong [ref=e11]: Language
+          - button "English " [ref=e13] [cursor=pointer]:
+            - strong [ref=e14]: English
+            - text: 
+        - list [ref=e15]:
+          - listitem
+          - listitem [ref=e16]:
+            - link "Sign In" [ref=e17] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/customer/account/login/referer/aHR0cHM6Ly9kZW1vLW0yLmJpcmQuZXUvY3VzdG9tZXIvYWNjb3VudC9sb2dpbi8~/
+            - text: or
+          - listitem [ref=e18]:
+            - link "Create an Account" [ref=e19] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/customer/account/create/
+      - generic [ref=e20]:
+        - text: 
+        - link "store logo" [ref=e21] [cursor=pointer]:
+          - /url: https://demo-m2.bird.eu/
+          - img "Magento Commerce" [ref=e22]
+        - link " My Cart" [ref=e24] [cursor=pointer]:
+          - /url: https://demo-m2.bird.eu/checkout/cart/
+          - text: 
+          - generic [ref=e25]: My Cart
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - text: 
+              - generic [ref=e31]: Search
+            - combobox " Search" [ref=e33]
+          - generic:
+            - button "Search" [disabled]:
+              - text: 
+              - generic: Search
+        - list:
+          - listitem: ()
+    - tablist [ref=e35]:
+      - tabpanel [ref=e36]:
+        - navigation [ref=e37]:
+          - menu [ref=e38]:
+            - listitem [ref=e39]:
+              - menuitem "Home" [ref=e40] [cursor=pointer]
+            - listitem [ref=e41]:
+              - menuitem "Women" [ref=e42]: Women
+            - listitem [ref=e43]:
+              - menuitem "Men" [ref=e44]: Men
+            - listitem [ref=e45]:
+              - menuitem "Bags" [ref=e46] [cursor=pointer]: Bags
+            - listitem [ref=e47]:
+              - menuitem "Blog" [ref=e48] [cursor=pointer]: Blog
+            - listitem [ref=e49]:
+              - menuitem "Lookbook" [ref=e50] [cursor=pointer]: Lookbook
+            - listitem [ref=e51]:
+              - menuitem "Contact" [ref=e52] [cursor=pointer]
+            - listitem [ref=e53]:
+              - menuitem "ACM page" [ref=e54] [cursor=pointer]
+    - main [ref=e55]:
+      - heading "Customer Login" [level=1] [ref=e57]
+      - generic:
+        - generic:
+          - alert
+          - alert
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - heading "Registered Customers" [level=2] [ref=e63]
+          - generic "Registered Customers" [ref=e64]:
+            - group [ref=e66]:
+              - generic [ref=e67]: If you have an account, sign in with your email address.
+              - generic [ref=e68]:
+                - generic [ref=e69]: Email*
+                - textbox "Email*" [ref=e71]
+              - generic [ref=e72]:
+                - generic [ref=e73]: Password*
+                - textbox "Password" [ref=e75]
+              - generic [ref=e76]:
+                - button "Sign In" [ref=e78] [cursor=pointer]
+                - link "Forgot Your Password?" [ref=e80] [cursor=pointer]:
+                  - /url: https://demo-m2.bird.eu/customer/account/forgotpassword/
+              - text: "* Required Fields"
+        - generic [ref=e81]:
+          - heading "New Customers" [level=2] [ref=e83]
+          - generic "New Customers" [ref=e84]:
+            - paragraph [ref=e85]: "Creating an account has many benefits: check out faster, keep more than one address, track orders and more."
+            - link "Create an Account" [ref=e88] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/customer/account/create/
+    - contentinfo [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e93]:
+          - generic [ref=e95]:
+            - text: 
+            - generic [ref=e96]:
+              - generic [ref=e97]: "Sign Up for Our Newsletter:"
+              - textbox "Sign Up for Our Newsletter:" [ref=e98]:
+                - /placeholder: Enter your email address
+          - button "Subscribe" [ref=e100] [cursor=pointer]
+        - list [ref=e101]:
+          - listitem [ref=e102]:
+            - link "Privacy and Cookie Policy" [ref=e103] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/privacy-policy-cookie-restriction-mode/
+          - listitem [ref=e104]:
+            - link "Search Terms" [ref=e105] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/search/term/popular/
+          - listitem [ref=e106]:
+            - link "Advanced Search" [ref=e107] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/catalogsearch/advanced/
+          - listitem [ref=e108]:
+            - link "Orders and Returns" [ref=e109] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/sales/guest/form/
+          - listitem [ref=e110]:
+            - link "Contact Us" [ref=e111] [cursor=pointer]:
+              - /url: https://demo-m2.bird.eu/contact/
+    - generic [ref=e112]: Copyright © 2016 Magento. All rights reserved.
+```
+
+# Test source
+
+```ts
+  1  | export class LoginPage{
+  2  |     constructor(page) {
+  3  |         this.page = page;
+  4  |         this.emailInput = page.locator('#email');
+  5  |         this.passwordInput = page.locator('#password');
+  6  |         this.signInButton = page.getByRole('button', { name: 'Sign In' });
+  7  |         
+  8  |     }
+  9  | 
+  10 |     async openLoginPage() {
+  11 |         await this.page.goto('https://demo-m2.bird.eu/customer/account/login/');
+  12 | 
+  13 |     }
+  14 | 
+  15 |     async login(email, password) {
+> 16 |         await this.emailInput.fill(email);
+     |                               ^ Error: locator.fill: value: expected string, got undefined
+  17 |         await this.passwordInput.fill(password);
+  18 |     }
+  19 | 
+  20 |     async submit() {
+  21 |         await this.signInButton.click();
+  22 |     }
+  23 | }
+  24 | 
+  25 | 
+```

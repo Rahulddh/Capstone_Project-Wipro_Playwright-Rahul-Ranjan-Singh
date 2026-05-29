@@ -1,0 +1,33 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Search discovery/search.spec.js >> Search & Discovery >> SEARCH-02 Invalid Search1234
+- Location: tests/Search discovery/search.spec.js:64:13
+
+# Error details
+
+```
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh --inspector-pipe --headless --no-startup-window --disable-http2 --disable-blink-features=AutomationControlled
+<launched> pid=8269
+[pid=8269][err] Cannot parse arguments: Unknown option --disable-http2
+Call log:
+  - <launching> /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh --inspector-pipe --headless --no-startup-window --disable-http2 --disable-blink-features=AutomationControlled
+  - <launched> pid=8269
+  - [pid=8269][err] Cannot parse arguments: Unknown option --disable-http2
+  - [pid=8269] <gracefully close start>
+  - [pid=8269] <kill>
+  - [pid=8269] <will force kill>
+  - [pid=8269] <process did exit: exitCode=1, signal=null>
+  - [pid=8269] starting temporary directories cleanup
+  - [pid=8269] finished temporary directories cleanup
+  - [pid=8269] <gracefully close end>
+
+```

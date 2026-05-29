@@ -1,0 +1,33 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Authentication/login.spec.js >> AUTHENTICATION Login Test >> LOGIN-02 Invalid login
+- Location: tests/Authentication/login.spec.js:35:9
+
+# Error details
+
+```
+Error: browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh --inspector-pipe --headless --no-startup-window --disable-http2 --disable-blink-features=AutomationControlled
+<launched> pid=5564
+[pid=5564][err] Cannot parse arguments: Unknown option --disable-http2
+Call log:
+  - <launching> /home/runner/.cache/ms-playwright/webkit-2287/pw_run.sh --inspector-pipe --headless --no-startup-window --disable-http2 --disable-blink-features=AutomationControlled
+  - <launched> pid=5564
+  - [pid=5564][err] Cannot parse arguments: Unknown option --disable-http2
+  - [pid=5564] <gracefully close start>
+  - [pid=5564] <kill>
+  - [pid=5564] <will force kill>
+  - [pid=5564] <process did exit: exitCode=1, signal=null>
+  - [pid=5564] starting temporary directories cleanup
+  - [pid=5564] finished temporary directories cleanup
+  - [pid=5564] <gracefully close end>
+
+```
