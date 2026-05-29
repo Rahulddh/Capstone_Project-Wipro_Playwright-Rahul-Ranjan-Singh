@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import {LoginPage} from "../../POM/loginPage.js";
+import {LoginPage} from "../../POM/loginpage.js";
 
 test.describe('AUTHENTICATION Login Test', () => {
     let loginpage

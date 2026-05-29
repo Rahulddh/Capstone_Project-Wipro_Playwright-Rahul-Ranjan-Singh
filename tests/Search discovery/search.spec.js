@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from "../../POM/loginPage.js";
+import { LoginPage } from "../../POM/loginpage.js";
 import { SearchPage } from '../../POM/search.js';
 
 test.describe('Search & Discovery', () => {
