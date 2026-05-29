@@ -16,7 +16,7 @@ export class SearchPage {
         // Sort
         this.sortDropdown =page.locator('#sorter');
 
-         // Compare
+        // Compare
         this.compareButton =page.locator('.action compare primary');
 
         this.compareLink =page.getByRole('link',{ name: /comparison list/i })

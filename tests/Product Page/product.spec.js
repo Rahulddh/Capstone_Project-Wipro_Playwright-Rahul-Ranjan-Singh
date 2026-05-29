@@ -135,7 +135,7 @@ test.describe('Product', () => {
         });
 
     // ===================================
-    // PRODUCT-10 Verify add to WishList
+    // PRODUCT-10 Verify add to Compare
     // ===================================
 
     test('PRODUCT-10 Verify add to Compare', async ({ page }) => {
