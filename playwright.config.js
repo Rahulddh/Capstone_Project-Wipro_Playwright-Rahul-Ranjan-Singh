@@ -9,11 +9,15 @@ import { defineConfig, devices } from '@playwright/test';
  import path from 'path';
  dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+ // Fallbacks for missing environment variables in local or CI environments
+ process.env.BASE_URL = process.env.BASE_URL || 'https://demo-m2.bird.eu/';
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
   testDir: './tests',
+  globalSetup: './global-setup.js',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,39 +33,37 @@ export default defineConfig({
     headless: true,
     baseURL: process.env.BASE_URL,
     screenshot: 'only-on-failure',
-
     video: 'retain-on-failure',
-    /* Base URL to use in actions like `await page.goto('')`. */
-    
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     ignoreHTTPSErrors: true,
-    
 
-    userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+    // Slow down actions globally
+    launchOptions: {
+      slowMo: 200,
+    },
 
-    // Slow down actions
-  launchOptions: {
-    slowMo: 200,
-    args: [
-      '--disable-http2',
-      '--disable-blink-features=AutomationControlled',
-    ],
-  },
-
-  // Extra timeout
-  navigationTimeout: 30000,
-  actionTimeout: 15000
-
+    // Extra timeout
+    navigationTimeout: 30000,
+    actionTimeout: 15000
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { 
+        ...devices['Desktop Chrome'],
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+        launchOptions: {
+          slowMo: 200,
+          args: [
+            '--disable-http2',
+            '--disable-blink-features=AutomationControlled',
+          ],
+        },
+      },
     },
 
     {
